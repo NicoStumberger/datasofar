@@ -43,6 +43,6 @@ I have been practicing Data Science since before I even knew the term but I star
 
 In addition to Data Science and Business Intelligence, I love hiking, photographing landscapes ([@trapast](https://www.instagram.com/trapast/)), wine tasting and, above all, learning new things. *"Wisdom is not a product of schooling but of the lifelong attempt to acquire it."*
 
-[Reach out](/datasofar.netlify.app/#contact) if you are interested in working with me! (or just talking about any of these topics :wink: ) 
+[Reach out](/#contact) if you are interested in working with me! (or just talking about any of these topics :wink: ) 
 
 {{< icon name="download" pack="fas" >}} Download my {{< staticref "media/ResumeNS_2021.pdf" "newtab" >}}CV/Resumé{{< /staticref >}}.

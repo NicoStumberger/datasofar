@@ -43,6 +43,6 @@ Practico ciencia de datos desde antes de conocer el término pero comencé a est
 
 Además de la ciencia de datos y la inteligencia comercial, me gusta salir a la montaña, fotografiar paisajes ([@trapast](https://www.instagram.com/trapast/)), probar nuevos vinos y, sobretodo, aprender cosas nuevas. *“La sabiduría no es un producto de la educación, sino del intento de toda la vida para adquirirla.”*
 
-Si te interesa trabajar conmigo (o hablar sobre alguno de estos temas), sentite libre de [contactarme!](/datasofar.netlify.app/#contact)
+Si te interesa trabajar conmigo (o hablar sobre alguno de estos temas), sentite libre de [contactarme!](/#contact)
 
 {{< icon name="download" pack="fas" >}} Descarga mi {{< staticref "media/ResumeNS_esp_2021.pdf" "newtab" >}}CV{{< /staticref >}}.
