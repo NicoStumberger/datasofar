@@ -11,7 +11,7 @@
 [es]
   languageCode = "es"
   contentDir = "content/es"
-  title = "Nicolás Stumberger"
+  title = "Datasofar"
   [es.params]
     description = "Site description in Spanish..."
       [[es.menu.main]]
