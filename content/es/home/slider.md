@@ -22,7 +22,7 @@ height: 500px
 
 
 item:
-  - title: NICOLÁS ŠTUMBERGER
+  - title: NICOLÁS STUMBERGER
     content: Hacer más accesibles los datos, la información y el conocimiento para que otros puedan tomar mejores decisiones
     # Choose `center`, `left`, or `right` alignment.
     align: center
