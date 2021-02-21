@@ -19,6 +19,10 @@
       url = "#about"
       weight = 10
       [[es.menu.main]]
+      name = "Posteos"
+      url = "#posts"
+      weight = 20
+      [[es.menu.main]]
       name = "Contacto"
       url = "#contact"
       weight = 70

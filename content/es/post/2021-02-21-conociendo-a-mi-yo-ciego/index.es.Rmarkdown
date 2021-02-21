@@ -1,0 +1,632 @@
+---
+title: Conociendo a mi Yo ciego
+author: Nicolas Stumberger
+date: '2021-02-21'
+slug: conociendo-a-mi-yo-ciego
+categories:
+  - R
+tags:
+  - gganimate
+  - plot
+  - R
+  - wordcloud
+  - nube de palabras
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2021-01-21T19:00:36-03:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+```{r setup, include=FALSE}
+
+## Set the default size of figures
+knitr::opts_chunk$set(fig.width=10, fig.height=10) 
+
+```
+
+```{r include=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(googlesheets4) # para conectarme con google sheets
+library(wordcloud)
+library(wordcloud2)
+library(RColorBrewer)
+library(lubridate)
+library(gganimate)
+library(gifski)
+```
+
+
+```{r include=FALSE, message=FALSE}
+gs4_auth()
+```
+
+```{r include=FALSE, message=FALSE, warning=FALSE}
+respuestas <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/1DP6w4_gSJiLOUdCJ17lUPq2sWBuLAqJlUOypzwNyKI0/edit#gid=1155944051",
+           col_names = TRUE,
+           trim_ws = TRUE) %>% 
+        janitor::clean_names()
+```
+
+Con el **objetivo** de contrastar cualidades autopercibidas con las cualidades que otras personas perciben sobre mi, llevé a cabo una encuesta de una sola pregunta para descubrir las cualidades/características que me definen.
+
+Con una lista de casi 100 características (para facilitar el trabajo), más un campo abierto para escribir otras cualidades, los encuestados debían contestar una sola pregunta: **si tuvieras que describirme con 5 cualidades, cuáles elegirías?**
+
+La lista de opciones escondía, entre varias cualidades, **fortalezas autopercibidas** (capacidad analítica, curiosidad, creatividad, amor por el aprendizaje y pensamiento crítico), **valores propios** (honestidad, sabiduría y autocontrol o templanza) y también **características negativas**.
+
+Envié la encuesta con un mensaje personalizado a **78 personas** (familia, amigos, compañeros y ex compañeros de trabajo y conocidos) de las que obtuve 77 respuestas. Este alto grado de respuesta se debe (especulo) al mensaje personalizado, que incitó un "ida y vuelta" con muchas personas. Podría decirse que la principal externalidad positiva obtenida a partir de esta encuesta fue ponerme al día con varias personas que hace mucho que no hablo.
+
+A una semana de esta encuesta, estos fueron los resultados:
+
+Con el `r round(77/78 * 100, 0)`% de respuesta, los encuestados **eligieron 53 cualidades distintas**. Lo que *a priori* parece un alto grado de dispersión, cuando se analiza la frecuencia de cada una de estas palabras, se destacan pocas de ellas.
+
+```{r include=FALSE, message=FALSE, warning=FALSE}
+
+cuali_0 <- respuestas %>% 
+  # quitar registro de respuesta propia
+  filter(year(marca_temporal) > 2020) %>%
+        separate(col = cuales_eligirias, into = c("1","2","3","4","5","6","7"), sep = ",")
+        
+
+cuali_1 <- bind_rows(
+        cuali_0 %>% select(marca_temporal, `1`) %>% rename(cuali = `1`),
+        cuali_0 %>% select(marca_temporal, `2`) %>% rename(cuali = `2`),
+        cuali_0 %>% select(marca_temporal, `3`) %>% rename(cuali = `3`),
+        cuali_0 %>% select(marca_temporal, `4`) %>% rename(cuali = `4`),
+        cuali_0 %>% select(marca_temporal, `5`) %>% rename(cuali = `5`),
+        cuali_0 %>% select(marca_temporal, `6`) %>% rename(cuali = `6`),
+        cuali_0 %>% select(marca_temporal, `7`) %>% rename(cuali = `7`)
+        )
+
+cuali_2 <- tibble(
+  marca_temporal = cuali_1$marca_temporal,
+  cuali = trimws(x = cuali_1$cuali, which = "both")
+) %>%
+  mutate(
+    cuali = case_when(
+      cuali == "humildad" ~ "Humildad",
+      cuali == "Humildad (modestia)" ~ "Humildad",
+      cuali == "paciencia" ~ "Paciencia",
+      TRUE ~ cuali
+    )
+  ) %>%
+  filter(!is.na(cuali))
+
+
+dicc <- tibble(
+        cuali = unique(cuali_2$cuali),
+        cuali_clean = unique(cuali_2$cuali) %>% janitor::make_clean_names()
+)
+
+# Escribo las cualidades únicas en un csv que luego pego en el google sheets, donde las ordeno manualmente en base a mi criterio personal1
+
+write.csv2(x = dicc, file = "output/cuali_unicas.csv")
+
+cuali_3 <- cuali_2 %>% 
+        left_join(dicc) %>% 
+  mutate(dummy = 1)
+
+cuali_freq <- cuali_3 %>% 
+  group_by(cuali) %>% 
+  summarise(freq = n()) %>% 
+  arrange(desc(freq))
+
+
+```
+
+```{r include=FALSE, message=FALSE, warning=FALSE}
+# Acá leo el google sheets con las cualidades únicas seleccionadas por la gente y ordenadas en base a mi criterio
+
+cuali_unicas_personal <-
+  read_sheet(
+    ss = "https://docs.google.com/spreadsheets/d/1tGqkcV_jYUpB8KAzJl7KRNhRUmmbgyMNH0LFh8OF1ms/edit#gid=942779792",
+    sheet = "cuali_unicas",
+    col_names = TRUE,
+    trim_ws = TRUE
+  ) %>%
+  janitor::clean_names() %>% 
+  rename(rank_personal = x1,
+         cuali = cuali_orden_personal)
+
+# Ranking de cuali de la encuesta
+
+cuali_unicas_encuesta <- cuali_freq %>% 
+  mutate(rank_encuesta = c(1:53)) %>% 
+  select(rank_encuesta, cuali)
+
+# Uno ambas tablas
+
+cuali_personal_vs_encuesta <- cuali_unicas_personal %>% 
+  left_join(cuali_unicas_encuesta, by = "cuali") %>% 
+  select(cuali, rank_personal, rank_encuesta)
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+wordcloud(
+  words = cuali_freq$cuali,
+  freq = cuali_freq$freq,
+  scale = c(4, .9),
+  min.freq = 1,
+  max.words = 55,
+  random.order = FALSE,
+  colors = brewer.pal(8, "Dark2"),fixed.asp = TRUE
+)
+
+```
+
+**Las más nombradas** fueron:
+
+-   **Capacidad analítica** (29)
+-   **Responsabilidad** (25)
+-   **Honestidad** (24)
+-   **Amabilidad** (22)
+-   **Amor por el aprendizaje** (22)
+
+De este top 5, **2 son consistentes con las fortalezas** que autopercibo ("Capacidad analítica" y "Amor por el aprendizaje") y **una de ellas es uno de mis valores** cardinales ("Honestidad"), por lo que, en una primera instancia, **la percepción de los otros coinciden con la propia en una buena medida**. Las cualidades "Responsabilidad" y "Amabilidad" me sorprenden (positivamente) y no esperaba verlas en este ranking.
+
+También fue inesperado (aunque es algo que le da solidez al resultado) que **el 91% de las personas que respondieron, nombraron por lo menos una de las características del top 5**. Esperablemente, este porcentaje aumenta a medida que se incluyen más cualidades: el 99% de los que contestaron, nombraron al menos una cualidad dentro del top 10.
+
+Los datos recabados me motivan a hacer un análisis (un poco) más profundo y, de haberlo pensado antes de desarrollar la encuesta, con comparaciones geográficas, temporales y grupales. No obstante, a los efectos de este reporte, solo me conformo con plantear las preguntas:
+
+-   ¿Cómo se compara el orden de las 53 cualidades mencionadas con el orden que le hubiera dado yo?
+-   Analizando las 53 características, ¿cuáles son las que perciben más los otros que yo? ¿Cuáles son más percibidas por mi que por las personas?
+-   ¿Existe alguna diferencia marcada en las cualidades elegidas por personas de Mendoza respecto a las de Buenos Aires? ¿O respecto a las cualidades nombradas por familiares y amigos respecto a aquellas personas conocidas en el ámbito laboral?
+-   De volver a hacer la encuesta dentro de 5 años, ¿notaría algún cambio significativo?
+
+Por el momento me voy a quedar con la intriga de dejar algo del "yo ciego" y del "yo oculto" por descubrir. Me conformo por haber empujado un poco esos límites y por haber usado un poco las estadísticas con un fin netamente personal y ocioso.
+
+Finalizo, solo por amor al arte, con una carrerita de barras que muestra el "hora a hora" de las respuestas, visualizando únicamente las primeras 10 cualidades por hora.
+
+```{r include=FALSE, message=FALSE, warning=FALSE}
+
+cuali_evol <- cuali_3 %>% 
+  mutate(hora = round_date(x = marca_temporal, unit = "hour"))
+
+ 
+cuali_evol_1 <- cuali_evol %>%
+  group_by(cuali, hora) %>%
+  arrange(hora) %>% 
+  summarise(freq = n()) %>% 
+  mutate(cuali_acum = cumsum(freq)) %>% 
+  as_tibble()
+
+
+# Creo un vector de las horas unicas de respuestas
+hora_dist <- unique(cuali_evol$hora)
+
+# Pruebo armar una funcion
+x <- hora_dist[2]
+
+# Pruebo como seria la fc
+cuali_evol %>% 
+  filter(hora <= x) %>% 
+  group_by(cuali) %>% 
+  summarise(freq = n()) %>% 
+  arrange(desc(freq)) %>% 
+        head(10) %>% 
+  mutate(hora_acum = x)
+
+# Creo la funcion que me de el resultado acumulado de frecuencia de cada cualidad en cada hora
+freq_acum <- function(x) {
+  cuali_evol %>% 
+  filter(hora <= x) %>% 
+  group_by(cuali) %>% 
+  summarise(freq = n()) %>% 
+  arrange(desc(freq)) %>% 
+                head(10) %>%
+  mutate(hora_acum = x)
+}
+
+freq_acum(hora_dist[1])
+
+output <- vector("list", length(cuali_evol_1))
+for (i in seq_along(hora_dist)) {
+  output[[i]] <- freq_acum(hora_dist[[i]])
+}
+
+output[[28]]
+
+# Estoy seguro que debe haber una forma programatica de hacer esto mas sencillo sin tanto copy paste
+freq_acum_tabla <- bind_rows(output[[1]],
+          output[[2]],
+          output[[3]],
+          output[[4]],
+          output[[5]],
+          output[[6]],
+          output[[7]],
+          output[[8]],
+          output[[9]],
+          output[[10]],
+          output[[11]],
+          output[[12]],
+          output[[13]],
+          output[[14]],
+          output[[15]],
+          output[[16]],
+          output[[17]],
+          output[[18]],
+          output[[19]],
+          output[[20]],
+          output[[21]],
+          output[[22]],
+          output[[23]],
+          output[[24]],
+          output[[25]],
+          output[[26]],
+          output[[27]],
+          output[[28]],
+          )
+
+```
+
+```{r echo=FALSE, include = FALSE, message=FALSE, warning=FALSE}
+freq_acum_tabla %>% 
+  ggplot(aes(freq, reorder(cuali, freq))) +
+  geom_col() +
+  transition_states(states = hora_acum)
+```
+
+
+```{r echo=FALSE, message=FALSE, error=FALSE, warning=FALSE}
+
+freq_acum_tabla_ggan <- freq_acum_tabla %>% 
+        group_by(hora_acum) %>% 
+        mutate(rank = min_rank(freq) * 1) %>%
+        ungroup()
+
+p <-
+        ggplot(
+                freq_acum_tabla_ggan,
+                aes(
+                        x = freq,
+                        y = rank,
+                        group = cuali,
+                        fill = as.factor(cuali),
+                        color = as.factor(cuali)
+                )
+        ) +
+
+        # geom_bar(
+        #         stat = "identity",
+        #         position = "dodge",
+        #         alpha = 0.8,
+        #         width = 0.9
+        # ) +
+        
+        # geom_col(position = position_dodge2(width = 0.9,  preserve = "single")) +
+        
+        geom_tile(aes(y = freq/2,
+                height = freq,
+                width = 0.9),
+                position = position_dodge2(width = 0.9, preserve = c("total", "single")),
+                alpha = 0.8, color = NA) +
+        
+        geom_text(aes(
+                y = 0,
+                x = freq,
+                label = paste(cuali, " ")
+        ),
+        size = 13,
+        position = position_dodge2(width = 0.9, preserve = c("total", "single")),
+        hjust = 1,
+        vjust = 0.2) +
+        geom_text(aes(
+                y= freq,
+                x = freq,
+                label = paste(" ", freq)
+        ),
+        size = 13,
+        position = position_dodge2(width = 0.9, preserve = c("total", "single")),
+        hjust = 0,
+        vjust = 0.2) +
+        coord_flip(clip = "off", expand = TRUE) +
+        scale_y_continuous(labels = scales::comma) +
+        theme_minimal() +
+        guides(color = FALSE,
+               fill = FALSE) +
+        labs(title = '{closest_state}', x = "", y = "") +
+        theme(
+                panel.grid = element_blank(),
+                # plot.title = element_text(hjust = 0, size = 22),
+                axis.ticks.y = element_blank(),
+                # These relate to the axes post-flip
+                axis.text.y  = element_blank(),
+                axis.text.x = element_blank(),
+                axis.ticks.x = element_blank(),
+                # These relate to the axes post-flip
+                plot.margin = margin(1, 2, 1, 15, "cm"),
+                plot.title = element_text(face = "bold.italic",
+                                        size = 36,
+                                        lineheight = 5,
+                                        colour = "grey70",
+                                        hjust = 0),
+        ) +
+        transition_states(hora_acum,
+                          # wrap = TRUE,
+                          transition_length = 5,
+                          state_length = 1) +
+        ease_aes('cubic-in-out') +
+        view_follow(
+                fixed_x = FALSE,
+                fixed_y = TRUE
+                # exclude_layer = NULL,
+                # aspect_ratio = 1
+        )
+
+# animate(p,
+#         # res = 200,
+#         width = 1080,
+#         height = 1080,
+#         duration = 15,
+#         start_pause = 2,
+#         end_pause = 13,
+#         renderer = gifski_renderer("output/cuali_race_4.gif"))
+
+
+# animate(p,
+#         # res = 200,
+#         width = 1080,
+#         height = 1080,
+#         duration = 15,
+#         start_pause = 2,
+#         end_pause = 13,
+#         renderer = av_renderer("output/cuali_race.mp4"))
+
+
+```
+
+```{r echo=FALSE, message=FALSE, error=FALSE, warning=FALSE}
+# duplico la ultima hora con la freq acumulada y la convierto en una hora mas.
+# Para armar un frame al final con las freq finales bien.
+# Busca corregir un error de visualizacion que aparece con la cuali "amor por el aprendizaje".
+
+hora_adicional <- freq_acum_tabla %>%
+  filter(hora_acum == as_datetime("2021-01-13 15:00:00")) %>%
+  mutate(hora_acum = as_datetime("2021-01-13 16:00:00"))
+
+
+freq_acum_tabla_2 <- freq_acum_tabla %>%
+  bind_rows(hora_adicional)
+
+freq_acum_tabla_ggan <- freq_acum_tabla_2 %>% 
+        group_by(hora_acum) %>% 
+        mutate(rank = min_rank(freq) * 1) %>%
+        ungroup()
+
+p <-
+        ggplot(
+                freq_acum_tabla_ggan,
+                aes(
+                        x = freq,
+                        y = rank,
+                        group = cuali,
+                        fill = as.factor(cuali),
+                        color = as.factor(cuali)
+                )
+        ) +
+
+        # geom_bar(
+        #         stat = "identity",
+        #         position = "dodge",
+        #         alpha = 0.8,
+        #         width = 0.9
+        # ) +
+        
+        # geom_col(position = position_dodge2(width = 0.9,  preserve = "single")) +
+        
+        geom_tile(aes(y = freq/2,
+                height = freq,
+                width = 0.9),
+                position = position_dodge2(width = 0.9, preserve = c("total", "single")),
+                alpha = 0.8, color = NA) +
+        
+        geom_text(aes(
+                y = 0,
+                x = freq,
+                label = paste(cuali, " ")
+        ),
+        size = 13,
+        position = position_dodge2(width = 0.9, preserve = c("total", "single")),
+        hjust = 1,
+        vjust = 0.2) +
+        geom_text(aes(
+                y= freq,
+                x = freq,
+                label = paste(" ", freq)
+        ),
+        size = 13,
+        position = position_dodge2(width = 0.9, preserve = c("total", "single")),
+        hjust = 0,
+        vjust = 0.2) +
+        coord_flip(clip = "off", expand = TRUE) +
+        scale_y_continuous(labels = scales::comma) +
+        theme_minimal() +
+        guides(color = FALSE,
+               fill = FALSE) +
+        labs(title = '{closest_state}', x = "", y = "") +
+        theme(
+                panel.grid = element_blank(),
+                # plot.title = element_text(hjust = 0, size = 22),
+                axis.ticks.y = element_blank(),
+                # These relate to the axes post-flip
+                axis.text.y  = element_blank(),
+                axis.text.x = element_blank(),
+                axis.ticks.x = element_blank(),
+                # These relate to the axes post-flip
+                plot.margin = margin(1, 2, 1, 15, "cm"),
+                plot.title = element_text(face = "bold.italic",
+                                        size = 36,
+                                        lineheight = 5,
+                                        colour = "grey70",
+                                        hjust = 0),
+        ) +
+        transition_states(hora_acum,
+                          # wrap = TRUE,
+                          transition_length = 5,
+                          state_length = 1) +
+        enter_grow() +
+        exit_shrink() +
+        # ease_aes('linear') +
+        ease_aes('cubic-in-out') +
+        view_follow(
+                fixed_x = FALSE,
+                fixed_y = TRUE
+                # exclude_layer = NULL,
+                # aspect_ratio = 1
+        )
+
+animate(p,
+        # res = 200,
+        width = 1080,
+        height = 1080,
+        duration = 15,
+        start_pause = 2,
+        end_pause = 15,
+        renderer = gifski_renderer("output/cuali_race_2.gif"))
+
+# animate(p,
+#         # res = 200,
+#         width = 1080,
+#         height = 1080,
+#         duration = 15,
+#         start_pause = 2,
+#         end_pause = 15,
+#         renderer = av_renderer("output/cuali_race_2.mp4"))
+
+```
+
+```{r echo=FALSE, eval=FALSE, message=FALSE, error=FALSE, warning=FALSE}
+freq_acum_smoother <- freq_acum_tabla_2 %>% 
+  group_by(cuali) %>% 
+  # Do somewhat rough interpolation for ranking
+  # (Otherwise the ranking shifts unpleasantly fast.)
+  # creo observaciones para todas las horas en las que no tengo
+  # 3600 segundo hay en una hora.
+  complete(hora_acum = full_seq(hora_acum, 3600)) %>% 
+  mutate(freq = spline(x = hora_acum, y = freq,  xout = hora_acum)$y) %>% 
+  group_by(hora_acum) %>% 
+  mutate(rank = min_rank(freq) * 1) %>% 
+  ungroup() %>% 
+  # Then interpolate further to quarter years for fast number ticking.
+  # Interpolate the ranks calculated earlier.
+  # group_by(cuali) %>%
+  # complete(hora_acum = full_seq(hora_acum, 1800)) %>% 
+  # mutate(freq = spline(x = hora_acum, y = freq, xout = hora_acum)$y) %>%
+  # # "approx" below for linear interpolation. "spline" has a bouncy effect.
+  # mutate(rank = spline(x = hora_acum, y = rank, xout = hora_acum)$y) %>%
+  # ungroup() %>% 
+  arrange(cuali, hora_acum)
+
+```
+
+```{r echo=FALSE, eval=FALSE, message=FALSE, error=FALSE, warning=FALSE}
+
+p <-
+  ggplot(
+    freq_acum_smoother,
+    aes(
+      x = freq,
+      y = rank,
+      group = cuali,
+      fill = as.factor(cuali),
+      color = as.factor(cuali)
+    )
+  ) +
+  
+  # geom_bar(
+  #         stat = "identity",
+  #         position = "dodge",
+  #         alpha = 0.8,
+  #         width = 0.9
+  # ) +
+  
+  # geom_col(position = position_dodge2(width = 0.9,  preserve = "single")) +
+  
+  geom_tile(
+    aes(
+      y = freq / 2,
+      height = freq,
+      width = 0.9
+    ),
+    position = position_dodge2(width = 0.9, preserve = c("total", "single")),
+    alpha = 0.8,
+    color = NA
+  ) +
+  
+  geom_text(
+    aes(
+      y = 0,
+      x = freq,
+      label = paste(cuali, " ")
+    ),
+    size = 13,
+    position = position_dodge2(width = 0.9, preserve = c("total", "single")),
+    hjust = 1,
+    vjust = 0.2
+  ) +
+  geom_text(
+    aes(
+      y = freq,
+      x = freq,
+      label = scales::comma(freq)
+    ),
+    size = 13,
+    position = position_dodge2(width = 0.9, preserve = c("total", "single")),
+    hjust = 0,
+    vjust = 0.2
+  ) +
+  coord_flip(clip = "off", expand = TRUE) +
+  scale_y_continuous(labels = scales::comma) +
+  theme_minimal() +
+  guides(color = FALSE,
+         fill = FALSE) +
+  labs(title = '{closest_state}', x = "", y = "") +
+  theme(
+    panel.grid = element_blank(),
+    # plot.title = element_text(hjust = 0, size = 22),
+    axis.ticks.y = element_blank(),
+    # These relate to the axes post-flip
+    axis.text.y  = element_blank(),
+    axis.text.x = element_blank(),
+    axis.ticks.x = element_blank(),
+    # These relate to the axes post-flip
+    plot.margin = margin(1, 2, 1, 2, "cm"),
+    plot.title = element_text(
+      face = "bold.italic",
+      size = 36,
+      lineheight = 5,
+      colour = "grey70",
+      hjust = 0
+    ),
+  ) +
+  transition_states(hora_acum,
+                    # wrap = TRUE,
+                    transition_length = 1,
+                    state_length = 0) +
+  # enter_grow() +
+  # exit_shrink() +
+  ease_aes('linear') +
+  view_follow(fixed_x = FALSE,
+              fixed_y = TRUE
+              # exclude_layer = NULL,
+              # aspect_ratio = 1)
+  )
+
+
+animate(p,
+        # res = 200,
+        width = 2160,
+        height = 2160,
+        duration = 15,
+        # start_pause = 2,
+        end_pause = 10,
+        renderer = gifski_renderer("output/cuali_race_smoother.gif"))
+
+```   
