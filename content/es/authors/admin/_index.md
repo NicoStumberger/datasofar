@@ -1,5 +1,5 @@
 ---
-bio: Disfruto desarrollar proyectos significativos, que involucren explorar, analizar, aprender y comunicar datos, con honestidad y eficiencia, para que otros tomen mejores decisiones.
+bio: Me interesa la ciencia de datos, R y otras cosas relacionadas con datos.
 education:
   courses:
   - course: Maestría en Relaciones y Negociaciones Internacionales
@@ -21,7 +21,7 @@ interests:
 organizations:
 - name: AAICI
   url: https://www.inversionycomercio.org.ar/
-role: Data Product Manager
+role: Data Analyst & Product Manager
 social:
 - icon: envelope
   icon_pack: fas

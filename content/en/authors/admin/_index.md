@@ -1,5 +1,5 @@
 ---
-bio: I enjoy developing meaningful projects that involve exploring, analyzing, learning and communicating data, honestly and efficiently, so that others make better decisions.
+bio: Interested in Data Science, R and other data related stuff.
 education:
   courses:
   - course: Ms in International Affairs and Negotiations
@@ -21,7 +21,7 @@ interests:
 organizations:
 - name: AAICI
   url: https://www.inversionycomercio.org.ar/
-role: Data Product Manager
+role: Data Analyst & Product Manager
 social:
 - icon: envelope
   icon_pack: fas
