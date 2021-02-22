@@ -45,4 +45,4 @@ In addition to Data Science and Business Intelligence, I love hiking, photograph
 
 [Reach out](/#contact) if you are interested in working with me! (or just talking about any of these topics :wink: ) 
 
-{{< icon name="download" pack="fas" >}} Download my {{< staticref "media/ResumeNS_2021.pdf" "newtab" >}}CV/Resumé{{< /staticref >}}.
+{{< icon name="download" pack="fas" >}} Download my {{< staticref "media/ResumeNS_2021_o.pdf" "newtab" >}}CV/Resumé{{< /staticref >}}.

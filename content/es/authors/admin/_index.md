@@ -45,4 +45,4 @@ Además de la ciencia de datos y la inteligencia comercial, me gusta salir a la 
 
 Si te interesa trabajar conmigo (o hablar sobre alguno de estos temas), sentite libre de [contactarme!](/#contact)
 
-{{< icon name="download" pack="fas" >}} Descarga mi {{< staticref "media/ResumeNS_esp_2021.pdf" "newtab" >}}CV{{< /staticref >}}.
+{{< icon name="download" pack="fas" >}} Descarga mi {{< staticref "media/ResumeNS_esp_2021_o.pdf" "newtab" >}}CV{{< /staticref >}}.
