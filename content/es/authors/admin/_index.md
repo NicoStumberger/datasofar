@@ -1,5 +1,5 @@
 ---
-bio: Me interesa la ciencia de datos, R y otras cosas relacionadas con datos.
+bio: Ciencia de datos, R y otras cosas relacionadas con datos.
 education:
   courses:
   - course: Maestría en Relaciones y Negociaciones Internacionales

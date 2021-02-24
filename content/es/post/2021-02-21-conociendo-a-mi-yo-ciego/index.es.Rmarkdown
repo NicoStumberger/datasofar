@@ -24,7 +24,7 @@ image:
 projects: []
 ---
 
-1
+
 ```{r setup, include=FALSE}
 
 ## Set the default size of figures

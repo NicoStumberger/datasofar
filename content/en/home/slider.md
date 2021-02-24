@@ -23,7 +23,7 @@ height: 500px
 
 item:
   - title: NICOLAS ŠTUMBERGER
-    content: Making data, information and knowledge more accessible
+    content: Data Science, R and other data related stuff.
     # Choose `center`, `left`, or `right` alignment.
     align: center
     # Overlay a color or image (optional).

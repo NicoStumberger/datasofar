@@ -23,7 +23,7 @@ height: 500px
 
 item:
   - title: NICOLÁS STUMBERGER
-    content: Hacer más accesibles los datos, la información y el conocimiento para que otros puedan tomar mejores decisiones
+    content: Ciencia de datos, R y otras cosas relacionadas con datos.
     # Choose `center`, `left`, or `right` alignment.
     align: center
     # Overlay a color or image (optional).
