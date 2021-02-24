@@ -13,8 +13,8 @@ tags:
 subtitle: ''
 summary: ''
 authors: []
-lastmod: '2021-01-20T20:26:37-03:00'
-featured: true
+lastmod: '2021-02-24T19:47:14-03:00'
+featured: no
 image:
   caption: ''
   focal_point: ''
@@ -24,6 +24,7 @@ projects: []
 ---
 
 In order to contrast self-perceived qualities with the qualities that other people perceive about me, I conducted a one-question survey to discover the qualities / characteristics that define me. (Sorry, only in spanish &#128532;&#128591;)
+
 
 ```{r setup, include=FALSE}
 
@@ -107,7 +108,7 @@ dicc <- tibble(
 
 # Escribo las cualidades únicas en un csv que luego pego en el google sheets, donde las ordeno manualmente en base a mi criterio personal1
 
-write.csv2(x = dicc, file = "content/en/post/2021-01-18-get-to-know-my-blind-self/output/cuali_unicas.csv")
+write.csv2(x = dicc, file = "output/cuali_unicas.csv")
 
 cuali_3 <- cuali_2 %>% 
         left_join(dicc) %>% 
@@ -491,7 +492,7 @@ animate(p,
         duration = 15,
         start_pause = 2,
         end_pause = 15,
-        renderer = gifski_renderer("content/en/post/2021-01-18-get-to-know-my-blind-self/output/cuali_race_2.gif"))
+        renderer = gifski_renderer("output/cuali_race_2.gif"))
 
 # animate(p,
 #         # res = 200,
@@ -629,6 +630,6 @@ animate(p,
         duration = 15,
         # start_pause = 2,
         end_pause = 10,
-        renderer = gifski_renderer("content/en/post/2021-01-18-get-to-know-my-blind-self/output/cuali_race_smoother.gif"))
+        renderer = gifski_renderer("output/cuali_race_smoother.gif"))
 
-```
+```   

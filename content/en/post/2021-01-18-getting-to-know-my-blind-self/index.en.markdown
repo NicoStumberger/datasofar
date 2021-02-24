@@ -13,16 +13,18 @@ tags:
 subtitle: ''
 summary: ''
 authors: []
-lastmod: '2021-01-20T20:26:37-03:00'
+lastmod: '2021-02-24T19:47:14-03:00'
 featured: no
 image:
   caption: ''
   focal_point: ''
   preview_only: no
+  placement: 2
 projects: []
 ---
 
 In order to contrast self-perceived qualities with the qualities that other people perceive about me, I conducted a one-question survey to discover the qualities / characteristics that define me. (Sorry, only in spanish &#128532;&#128591;)
+
 
 
 
