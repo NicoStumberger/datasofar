@@ -19,6 +19,7 @@ image:
   caption: ''
   focal_point: ''
   preview_only: no
+  placement: 2
 projects: []
 ---
 
@@ -106,7 +107,7 @@ dicc <- tibble(
 
 # Escribo las cualidades únicas en un csv que luego pego en el google sheets, donde las ordeno manualmente en base a mi criterio personal1
 
-write.csv2(x = dicc, file = "output/cuali_unicas.csv")
+write.csv2(x = dicc, file = "content/en/post/2021-01-18-get-to-know-my-blind-self/output/cuali_unicas.csv")
 
 cuali_3 <- cuali_2 %>% 
         left_join(dicc) %>% 
@@ -490,7 +491,7 @@ animate(p,
         duration = 15,
         start_pause = 2,
         end_pause = 15,
-        renderer = gifski_renderer("output/cuali_race_2.gif"))
+        renderer = gifski_renderer("content/en/post/2021-01-18-get-to-know-my-blind-self/output/cuali_race_2.gif"))
 
 # animate(p,
 #         # res = 200,
@@ -628,6 +629,6 @@ animate(p,
         duration = 15,
         # start_pause = 2,
         end_pause = 10,
-        renderer = gifski_renderer("output/cuali_race_smoother.gif"))
+        renderer = gifski_renderer("content/en/post/2021-01-18-get-to-know-my-blind-self/output/cuali_race_smoother.gif"))
 
 ```

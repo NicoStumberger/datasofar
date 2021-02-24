@@ -20,9 +20,11 @@ image:
   caption: ''
   focal_point: ''
   preview_only: no
+  placement: 2
 projects: []
 ---
 
+1
 
 
 
