@@ -21,7 +21,7 @@ interests:
 organizations:
 - name: AAICI
   url: https://www.inversionycomercio.org.ar/
-role: Data Analyst & Product Manager
+role: Product Manager & Data Analyst 
 social:
 - icon: envelope
   icon_pack: fas
