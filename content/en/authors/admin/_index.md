@@ -2,6 +2,9 @@
 bio: Interested in Data Science, R and other data related stuff.
 education:
   courses:
+  - course: Ms in Statistics
+    institution: UNTREF University (Buenos Aires, ARG)
+    year: 2021-2022 (in progress)
   - course: Ms in International Affairs and Negotiations
     institution: San Andrés University & FLACSO (Buenos Aires, ARG)
     year: 2017
@@ -16,7 +19,6 @@ interests:
 - Business Intelligence
 - Data visualization
 - Machine Learning
-- Mountaineering
 - Landscape photography
 organizations:
 - name: AAICI
@@ -39,9 +41,9 @@ superuser: true
 title: Nico Štumberger
 ---
 
-I have been practicing Data Science since before I even knew the term but I started studying it as a discipline 4 years ago. I have a degree in International Trade and a Master's degree in International Affairs and Negotiations. I have worked as an analyst, specialized in international market research and business intelligence, and evolved as a project leader. Now, as a side project, I am looking for a way to incorporate machine learning techniques into the International Trade sphere in order to improve decision making, both in the public and private sector.
+I have been analyzing data since before I even knew the term of Data Science, but I started studying it as a discipline 4 years ago. I've worked as an analyst :nerd:, specialized in international market research :globe_showing_Americas: and Business Intelligence, and evolved as a Product Manager. I love Agile Methodology :arrows_counterclockwise:, good Data Visualization :chart_with_upwards_trend: and efficiency :bulb:.
 
-In addition to Data Science and Business Intelligence, I love hiking, photographing landscapes ([@trapast](https://www.instagram.com/trapast/)), wine tasting and, above all, learning new things. *"Wisdom is not a product of schooling but of the lifelong attempt to acquire it."*
+In addition to Data Science, I love hiking :mountain:, photographing landscapes :camera: ([@trapast](https://www.instagram.com/trapast/)), wine tasting :wine_glass: and, above all, learning new things :books:. *"Wisdom is not a product of schooling but of the lifelong attempt to acquire it."*
 
 [Reach out](/#contact) if you are interested in working with me! (or just talking about any of these topics :wink: ) 
 

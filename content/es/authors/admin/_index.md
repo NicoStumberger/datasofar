@@ -2,6 +2,9 @@
 bio: Ciencia de datos, R y otras cosas relacionadas con datos.
 education:
   courses:
+  - course: Maestría en Generación y Análisis de Información Estadística
+    institution: UNTREF (Buenos Aires, ARG)
+    year: 2021-2022 (en curso)
   - course: Maestría en Relaciones y Negociaciones Internacionales
     institution: Universidad de San Andrés & FLACSO (Buenos Aires, ARG)
     year: 2017
@@ -16,7 +19,6 @@ interests:
 - Inteligencia Comercial
 - Visualización de datos
 - Machine Learning
-- Montañismo
 - Fotografía de paisajes
 organizations:
 - name: AAICI
@@ -39,9 +41,9 @@ superuser: true
 title: Nico Stumberger
 ---
 
-Practico ciencia de datos desde antes de conocer el término pero comencé a estudiarla como disciplina hace 4 años. Me formé en Comercio Internacional y soy Mg. en Relaciones y Negociaciones Internacionales. Crecí como analista, me especialicé en inteligencia comercial y evolucioné como líder de proyectos. Ahora, como proyecto paralelo, investigo la manera de incorporar técnicas de machine learning al comercio internacional con el fin de mejorar la toma de decisiones, tanto en el ámbito público como en el privado.
+Analizo datos desde antes de conocer el término de "ciencia de datos", pero comencé a estudiarla como disciplina hace 4 años. Trabajé como analista :nerd:, me especialicé en investigaciones de mercado internacional :globe_showing_Americas: e inteligencia comercial y evolucioné como Product Manager. Me gustan las metodologías ágiles :arrows_counterclockwise:, la buena visualización de datos :chart_with_upwards_trend: y la eficiencia :bulb:.
 
-Además de la ciencia de datos y la inteligencia comercial, me gusta salir a la montaña, fotografiar paisajes ([@trapast](https://www.instagram.com/trapast/)), probar nuevos vinos y, sobretodo, aprender cosas nuevas. *“La sabiduría no es un producto de la educación, sino del intento de toda la vida para adquirirla.”*
+Además de la ciencia de datos, me gusta salir a la montaña :mountain:, fotografiar paisajes :camera: ([@trapast](https://www.instagram.com/trapast/)), probar nuevos vinos :wine_glass: y, sobretodo, aprender cosas nuevas :books:. *“La sabiduría no es un producto de la educación, sino del intento de toda la vida para adquirirla.”*
 
 Si te interesa trabajar conmigo (o hablar sobre alguno de estos temas), sentite libre de [contactarme!](/#contact)
 
