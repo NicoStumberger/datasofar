@@ -41,9 +41,9 @@ superuser: true
 title: Nico Štumberger
 ---
 
-I have been analyzing data since before I even knew the term of Data Science, but I started studying it as a discipline 4 years ago. I've worked as an analyst :nerd:, specialized in international market research :globe_showing_Americas: and Business Intelligence, and evolved as a Product Manager. I love Agile Methodology :arrows_counterclockwise:, good Data Visualization :chart_with_upwards_trend: and efficiency :bulb:.
+I have been analyzing data since before I even knew the term Data Science, but I started studying it as a discipline four years ago. I've worked as an analyst :nerd:, specialized in international market research :globe_showing_Americas: and Business Intelligence, and evolved as a Product Manager. I love Agile Methodology :arrows_counterclockwise:, good Data Visualization :chart_with_upwards_trend: and efficiency :bulb:.
 
-In addition to Data Science, I love hiking :mountain:, photographing landscapes :camera: ([@trapast](https://www.instagram.com/trapast/)), wine tasting :wine_glass: and, above all, learning new things :books:. *"Wisdom is not a product of schooling but of the lifelong attempt to acquire it."*
+In addition to Data Science, I enjoy hiking :hiking_boot:, photographing landscapes :camera: ([@trapast](https://www.instagram.com/trapast/)), wine tasting :wine_glass: and, above all, learning new things :books:. *"Wisdom is not a product of schooling but of the lifelong attempt to acquire it."*
 
 [Reach out](/#contact) if you are interested in working with me! (or just talking about any of these topics :wink: ) 
 
