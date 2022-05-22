@@ -12,7 +12,7 @@ tags:
   - exports
   - International Trade
 subtitle: 'How to predict if a company will export the following year with the algorithm k-NN classification. (Sorry, only in spanish &#128532;&#128591;).'
-summary: 'The present analysis aims to answer the question in the subtitle: How to predict if a company will export the following year with the k-NN classification algorithm? This objective, in turn, serves a greater purpose, which is to bring techniques from the field of machine learning to the field of international trade, which is useful for both the public and private sectors. (Sorry, only in spanish &#128532;&#128591;).'
+summary: 'The present analysis aims to answer the question in the subtitle: How to predict if a company will export the following year with the k-NN classification algorithm? This objective, in turn, serves a greater purpose, which is to bring techniques from the field of Machine Learning to the field of international trade, which is useful for both the public and private sectors. (Sorry, only in spanish &#128532;&#128591;).'
 authors: []
 lastmod: '2021-02-22T09:44:28-03:00'
 featured: true

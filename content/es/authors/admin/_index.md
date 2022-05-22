@@ -19,7 +19,6 @@ interests:
 - Inteligencia Comercial
 - Visualización de datos
 - Machine Learning
-- Fotografía de paisajes
 organizations:
 - name: AAICI
   url: https://www.inversionycomercio.org.ar/
@@ -41,10 +40,10 @@ superuser: true
 title: Nico Stumberger
 ---
 
-Analizo datos desde antes de conocer el término de "ciencia de datos", pero comencé a estudiarla como disciplina hace 4 años. Trabajé como analista :nerd:, me especialicé en investigaciones de mercado internacional :globe_showing_Americas: e inteligencia comercial y evolucioné como Product Manager. Me gustan las metodologías ágiles :arrows_counterclockwise:, la buena visualización de datos :chart_with_upwards_trend: y la eficiencia :bulb:.
+Analizo datos desde antes de conocer el término de "ciencia de datos", pero comencé a estudiarla como disciplina hace `r lubridate::year(lubridate::today())-lubridate::year("2017-01-01")`años. Trabajé como analista :nerd:, me especialicé en investigaciones de mercado internacional :globe_showing_Americas: e inteligencia comercial y evolucioné como Product Manager. Me gustan las metodologías ágiles, la buena visualización de datos :chart_with_upwards_trend: la eficiencia y la innovación :bulb:.
 
 Además de la ciencia de datos, me gusta salir a la montaña :mountain:, fotografiar paisajes :camera: ([@trapast](https://www.instagram.com/trapast/)), probar nuevos vinos :wine_glass: y, sobretodo, aprender cosas nuevas :books:. *“La sabiduría no es un producto de la educación, sino del intento de toda la vida para adquirirla.”*
 
 Si te interesa trabajar conmigo (o hablar sobre alguno de estos temas), sentite libre de [contactarme!](/#contact)
 
-{{< icon name="download" pack="fas" >}} Descarga mi {{< staticref "media/ResumeNS_esp_2021_o.pdf" "newtab" >}}CV{{< /staticref >}}.
+{{< icon name="download" pack="fas" >}} Descarga mi {{< staticref "media/Resume_CV_NicoStumberger_2022.pdf" "newtab" >}}CV{{< /staticref >}}.

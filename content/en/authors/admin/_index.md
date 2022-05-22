@@ -2,7 +2,7 @@
 bio: Interested in Data Science, R and other data related stuff.
 education:
   courses:
-  - course: Ms in Statistics
+  - course: Ms in Applied Statistics
     institution: UNTREF University (Buenos Aires, ARG)
     year: 2021-2022 (in progress)
   - course: Ms in International Affairs and Negotiations
@@ -19,7 +19,6 @@ interests:
 - Business Intelligence
 - Data visualization
 - Machine Learning
-- Landscape photography
 organizations:
 - name: AAICI
   url: https://www.inversionycomercio.org.ar/
@@ -38,13 +37,13 @@ social:
   icon_pack: fab
   link: https://www.instagram.com/datasofar/
 superuser: true
-title: Nico Štumberger
+title: Nico Stumberger
 ---
 
-I have been analyzing data since before I even knew the term Data Science, but I started studying it as a discipline four years ago. I've worked as an analyst :nerd:, specialized in international market research :globe_showing_Americas: and Business Intelligence, and evolved as a Product Manager. I love Agile Methodology :arrows_counterclockwise:, good Data Visualization :chart_with_upwards_trend: and efficiency :bulb:.
+I have been analyzing data since before I even knew the term Data Science, but I started studying it as a discipline four years ago. I've worked as an analyst :nerd:, specialized in international market research :globe_showing_Americas: and Business Intelligence, and evolved as a Product Manager. I love Agile Methodology, good Data Visualization :chart_with_upwards_trend: efficiency and innovation :bulb:.
 
 In addition to Data Science, I enjoy hiking :hiking_boot:, photographing landscapes :camera: ([@trapast](https://www.instagram.com/trapast/)), wine tasting :wine_glass: and, above all, learning new things :books:. *"Wisdom is not a product of schooling but of the lifelong attempt to acquire it."*
 
 [Reach out](/#contact) if you are interested in working with me! (or just talking about any of these topics :wink: ) 
 
-{{< icon name="download" pack="fas" >}} Download my {{< staticref "media/ResumeNS_2021_o.pdf" "newtab" >}}CV/Resumé{{< /staticref >}}.
+{{< icon name="download" pack="fas" >}} Download my {{< staticref "media/Resume_CV_NicoStumberger_2022.pdf" "newtab" >}}CV/Resumé{{< /staticref >}}.

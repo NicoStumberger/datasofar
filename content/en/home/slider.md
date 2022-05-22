@@ -22,7 +22,7 @@ height: 500px
 
 
 item:
-  - title: NICOLAS ŠTUMBERGER
+  - title: NICO STUMBERGER
     content: Data Science, R and other data related stuff.
     # Choose `center`, `left`, or `right` alignment.
     align: center
