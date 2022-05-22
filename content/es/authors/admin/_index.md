@@ -40,7 +40,7 @@ superuser: true
 title: Nico Stumberger
 ---
 
-Analizo datos desde antes de conocer el término de "ciencia de datos", pero comencé a estudiarla como disciplina hace `r lubridate::year(lubridate::today())-lubridate::year("2017-01-01")`años. Trabajé como analista :nerd:, me especialicé en investigaciones de mercado internacional :globe_showing_Americas: e inteligencia comercial y evolucioné como Product Manager. Me gustan las metodologías ágiles, la buena visualización de datos :chart_with_upwards_trend: la eficiencia y la innovación :bulb:.
+Analizo datos desde antes de conocer el término de "ciencia de datos", pero comencé a estudiarla como disciplina hace 5 años. Trabajé como analista :nerd:, me especialicé en investigaciones de mercado internacional :globe_showing_Americas: e inteligencia comercial y evolucioné como Product Manager. Me gustan las metodologías ágiles, la buena visualización de datos :chart_with_upwards_trend: la eficiencia y la innovación :bulb:.
 
 Además de la ciencia de datos, me gusta salir a la montaña :mountain:, fotografiar paisajes :camera: ([@trapast](https://www.instagram.com/trapast/)), probar nuevos vinos :wine_glass: y, sobretodo, aprender cosas nuevas :books:. *“La sabiduría no es un producto de la educación, sino del intento de toda la vida para adquirirla.”*
 
