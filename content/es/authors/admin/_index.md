@@ -1,5 +1,5 @@
 ---
-bio: Ciencia de datos, R y otras cosas relacionadas con datos.
+bio: Uso datos para entender el mundo y tomar mejores decisiones.
 education:
   courses:
   - course: Maestría en Generación y Análisis de Información Estadística
@@ -22,7 +22,7 @@ interests:
 organizations:
 - name: AAICI
   url: https://www.inversionycomercio.org.ar/
-role: Product Manager & Data Analyst
+role: Product Manager | Data Analyst
 social:
 - icon: envelope
   icon_pack: fas

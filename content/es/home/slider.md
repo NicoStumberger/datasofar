@@ -39,7 +39,7 @@ item:
     cta_icon_pack: fas
     # cta_icon: graduation-cap
   - title: 
-    content: 'Me interesa desarrollar proyectos significativos, que involucren explorar, analizar, aprender y comunicar datos, con honestidad y eficiencia, para que otros tomen mejores decisiones.'
+    content: 'Apasionado por los datos. Dispuesto a hacer tu trabajo más ordenado, eficiente, basado en datos, innovador y estético con la ciencia de datos.'
     align: center
     overlay_color: '#23252f'
     overlay_img: ''

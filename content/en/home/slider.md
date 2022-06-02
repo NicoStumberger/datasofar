@@ -23,7 +23,7 @@ height: 500px
 
 item:
   - title: NICO STUMBERGER
-    content: Data Science, R and other data related stuff.
+    content: Using data to help us understand the world and make better judgements.
     # Choose `center`, `left`, or `right` alignment.
     align: center
     # Overlay a color or image (optional).
@@ -39,7 +39,7 @@ item:
     cta_icon_pack: fas
     # cta_icon: graduation-cap
   - title: 
-    content: 'I enjoy developing meaningful projects that involve exploring, analyzing, learning and communicating data, honestly and efficiently, so that others can make better decisions.'
+    content: 'Passionate about data. Eager to make your work tidier, more efficient, data-driven, innovative and aesthetic with data science.'
     align: center
     overlay_color: '#23252f'
     overlay_img: ''

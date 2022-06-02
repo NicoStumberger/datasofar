@@ -1,5 +1,5 @@
 ---
-bio: Interested in Data Science, R and other data related stuff.
+bio: Using data to help us understand the world and make better judgements.
 education:
   courses:
   - course: Ms in Applied Statistics
@@ -22,7 +22,7 @@ interests:
 organizations:
 - name: AAICI
   url: https://www.inversionycomercio.org.ar/
-role: Product Manager & Data Analyst 
+role: Product Manager | Data Analyst 
 social:
 - icon: envelope
   icon_pack: fas
